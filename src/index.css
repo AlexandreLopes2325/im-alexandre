@@ -1,16 +1,26 @@
 @import 'tailwindcss';
 
+/*
+ * Design tokens. Single source of truth for the palette — swap values
+ * here to re-theme the whole site.
+ */
 @theme {
-  --color-bg: #0a0b0d;
-  --color-surface: #121317;
-  --color-surface-2: #1a1c21;
-  --color-border: #26282f;
-  --color-text: #e7e8ea;
-  --color-text-muted: #9a9ca3;
-  --color-accent: #4ade9c;
-  --color-accent-dim: #2f7a5c;
+  --color-bg: #0a0b10;
+  --color-surface: #11131a;
+  --color-surface-2: #181b25;
+  --color-border: #262a3a;
+  --color-text: #e8e9f0;
+  --color-text-muted: #9aa0b4;
 
-  --font-heading: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --color-accent: #7c5cff;
+  --color-accent-dim: #3a2e80;
+  --color-accent-soft: #7c5cff26;
+
+  --color-accent-2: #ffb454;
+  --color-accent-2-dim: #7a5220;
+  --color-accent-2-soft: #ffb45426;
+
+  --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
@@ -56,5 +66,51 @@ body {
 @layer utilities {
   .section-heading {
     font-family: var(--font-heading);
+  }
+
+  /* Faint dot grid, used behind the hero. */
+  .bg-dot-grid {
+    background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  /* Soft radial glow anchored to a corner, used behind the hero and featured panels. */
+  .bg-glow {
+    background-image: radial-gradient(
+      640px circle at 80% 20%,
+      var(--color-accent-soft),
+      transparent 60%
+    );
+  }
+
+  .glow-panel {
+    box-shadow:
+      0 0 0 1px var(--color-border),
+      0 30px 80px -30px var(--color-accent-soft);
+  }
+}
+
+/* Scroll-driven reveal: fades/slides content in as it enters the viewport.
+   No JS, no animation library — degrades to "always visible" wherever
+   animation-timeline isn't supported, and is skipped entirely under
+   prefers-reduced-motion. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 25%;
+    }
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
