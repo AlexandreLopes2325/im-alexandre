@@ -27,7 +27,7 @@ export default {
   about: {
     heading: 'About',
     paragraphs: [
-      "Early-career developer focused on data and systems. I'm studying IT Management at SENAC and, since 2024, I've worked at Mellone (footwear e-commerce), where I coordinate fulfillment operations and manage the TikTok Shop.",
+      "Early-career developer focused on data and systems. I'm studying IT Management at SENAC and, since 2024, I've worked at a footwear e-commerce company, where I coordinate fulfillment operations and manage the TikTok Shop.",
       "That's where I learned to make decisions based on real data and to handle high-volume operations. On the side, I turn real workplace problems into software: I built an internal operations portal from scratch (Node.js, Express, React and PostgreSQL on Supabase) with JWT authentication, module-level permissions, audit logs and marketplace API integrations (OAuth2 and webhooks).",
       'What drives me: organizing information, modeling data and automating repetitive work. Currently studying English and Azure (AZ-900).',
     ],
@@ -61,7 +61,6 @@ export default {
     heading: 'Projects',
     intro: 'Real problems, solved with software.',
     linkLabel: 'Repository',
-    linkTodoLabel: 'Repository (coming soon)',
     items: [
       {
         name: 'Operations Portal',
@@ -70,8 +69,8 @@ export default {
         solution:
           'A full-stack portal with 4 access levels, granular permissions per module and action, audit logs with IP tracking, a block-based manual editor with preview and drag-and-drop, a logo and template library, and a returns module integrated with marketplace APIs (OAuth2 with automatic token refresh and webhooks).',
         tech: ['Node.js', 'Express', 'PostgreSQL (Supabase)', 'React', 'Vite', 'Tailwind CSS', 'JWT', 'bcrypt'],
-        link: 'TODO: repository link (private or public)',
-        linkIsTodo: true,
+        link: 'https://github.com/AlexandreLopes2325/operations-portal',
+        linkIsTodo: false,
       },
       {
         name: 'EAN Extractor',
@@ -105,30 +104,30 @@ export default {
     heading: 'Database',
     eyebrow: 'What sets me apart',
     intro:
-      "One of my favorite parts of the Operations Portal is the data modeling itself. Below is a simplified, fictional version of the schema, to show how I think about structure before the screen.",
+      "One of my favorite parts of the Operations Portal is the data modeling itself. Below is the real database schema (PostgreSQL / Supabase), simplified only in how many columns are shown per table — no name is made up.",
     diagramCaption:
-      'Simplified model of the Operations Portal (generic table names, no real data).',
+      'Real Operations Portal schema (database/schema.sql) — 11 tables, names and relations as they are in the database.',
     decisionsHeading: 'Modeling decisions',
     decisions: [
       {
-        title: 'Permissions per module and action',
+        title: 'Fixed role + on-demand JSON permissions',
         text:
-          "Instead of a single flat 'role' field, permissions live in their own table, linking a role, a module and an action (read, create, edit, delete) through a join table. That makes access adjustable without touching code.",
+          "users.role holds one of 4 fixed levels (viewer, editor, admin, admin_master) via a CHECK constraint. Instead of building a separate permissions table for today's small team, the permissions column (jsonb, optional) lets that default be overridden per user — null means 'use the role's default'.",
       },
       {
-        title: 'Audit logs with IP tracking',
+        title: 'audit_logs with free-form JSON details',
         text:
-          'Every sensitive action creates an audit record with the user, the action, the affected table/record, the source IP and a timestamp — important for tracing changes in a system with multiple access levels.',
+          'audit_logs stores user_id, action, details (jsonb) and ip_address. user_id references users(id) ON DELETE SET NULL, so the audit trail survives even if the user account is later deleted.',
       },
       {
-        title: 'Content blocks as a typed list',
+        title: 'Typed sections + custom_html as an escape hatch',
         text:
-          "The manual editor doesn't store one big text field: each manual is an ordered list of typed blocks (text, image, numbered step), each with its own position. That's what makes the drag-and-drop preview editor possible.",
+          'The manual editor stores ordered blocks in sections, with type restricted by a CHECK constraint (title, subtitle, text, alert, table, image, step, checklist, divider) and sort_order. But manuals.custom_html, when set, replaces the blocks entirely — a direct way out for pages that don\'t fit the block editor.',
       },
       {
-        title: 'Return reasons configurable per channel',
+        title: 'Channel as a natural key, reason as historical text',
         text:
-          'Each sales channel has its own return rules, so return reasons live in a configurable table tied to the channel, instead of a fixed list hardcoded in the app.',
+          "return_reasons.channel and returns.channel reference return_channels(key) — not a numeric id — with ON UPDATE CASCADE. returns.reason, though, stores the reason's label as free text at the time of the return, so editing or deactivating a reason later doesn't rewrite history.",
       },
     ],
   },
@@ -137,7 +136,7 @@ export default {
     items: [
       {
         role: 'E-commerce Assistant',
-        company: 'Mellone',
+        company: 'Footwear e-commerce company',
         period: 'Jul 2024 — Present',
         description:
           'Coordinating fulfillment operations, managing the TikTok Shop, building the internal operations portal and related automations, and standardizing product descriptions and size charts.',
@@ -185,7 +184,7 @@ export default {
     heading: 'Contact',
     intro: 'Open to opportunities in data and software development.',
     emailLabel: 'Email',
-    emailTodo: 'TODO: add email address',
+    phoneLabel: 'Phone',
     linkedinLabel: 'LinkedIn',
     githubLabel: 'GitHub',
   },

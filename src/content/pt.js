@@ -27,7 +27,7 @@ export default {
   about: {
     heading: 'Sobre',
     paragraphs: [
-      'Desenvolvedor em início de carreira, com foco em dados e sistemas. Estudo Gestão da Tecnologia da Informação no SENAC e, desde 2024, trabalho na Mellone (e-commerce de calçados), onde coordeno a expedição e gerencio o TikTok Shop.',
+      'Desenvolvedor em início de carreira, com foco em dados e sistemas. Estudo Gestão da Tecnologia da Informação no SENAC e, desde 2024, trabalho em uma empresa de e-commerce de calçados, onde coordeno a expedição e gerencio o TikTok Shop.',
       'Foi ali que aprendi a decidir com base em dado real e a lidar com operação de volume. Em paralelo, transformo problemas reais do trabalho em software: construí do zero um portal operacional interno (Node.js, Express, React e PostgreSQL no Supabase) com autenticação JWT, permissões por módulo, logs de auditoria e integração com APIs de marketplaces (OAuth2 e webhooks).',
       'O que me move: organizar informação, modelar dados e automatizar tarefas repetitivas. Atualmente estudando inglês e Azure (AZ-900).',
     ],
@@ -61,7 +61,6 @@ export default {
     heading: 'Projetos',
     intro: 'Problemas reais, resolvidos com software.',
     linkLabel: 'Repositório',
-    linkTodoLabel: 'Repositório (em breve)',
     items: [
       {
         name: 'Operations Portal',
@@ -70,8 +69,8 @@ export default {
         solution:
           'Portal full-stack com 4 níveis de acesso, permissões granulares por módulo e ação, logs de auditoria com IP, editor de manuais em blocos com preview e arrastar-e-soltar, biblioteca de logos e templates, e módulo de devoluções com integrações a APIs de marketplaces (OAuth2 com refresh automático e webhooks).',
         tech: ['Node.js', 'Express', 'PostgreSQL (Supabase)', 'React', 'Vite', 'Tailwind CSS', 'JWT', 'bcrypt'],
-        link: 'TODO: link do repositório (privado ou público)',
-        linkIsTodo: true,
+        link: 'https://github.com/AlexandreLopes2325/operations-portal',
+        linkIsTodo: false,
       },
       {
         name: 'EAN Extractor',
@@ -105,30 +104,30 @@ export default {
     heading: 'Banco de Dados',
     eyebrow: 'Diferencial',
     intro:
-      'Uma das partes do Operations Portal que mais gosto é a modelagem dos dados. Abaixo está uma versão simplificada e fictícia do esquema, para mostrar como penso a estrutura antes da tela.',
+      'Uma das partes do Operations Portal que mais gosto é a modelagem dos dados. Abaixo está o schema real do banco (PostgreSQL / Supabase), simplificado apenas na quantidade de colunas exibidas por tabela — nenhum nome foi inventado.',
     diagramCaption:
-      'Modelo simplificado do Operations Portal (nomes de tabela genéricos, sem dados reais).',
+      'Schema real do Operations Portal (database/schema.sql) — 11 tabelas, nomes e relações como estão no banco.',
     decisionsHeading: 'Decisões de modelagem',
     decisions: [
       {
-        title: 'Permissões por módulo e ação',
+        title: 'role fixo + permissions em JSON sob demanda',
         text:
-          'Em vez de um único campo de "cargo", as permissões ficam em uma tabela própria, ligando papel (role), módulo e ação (ler, criar, editar, excluir) por uma tabela de junção. Isso permite ajustar o acesso sem alterar código.',
+          'users.role guarda um de 4 níveis fixos (viewer, editor, admin, admin_master) via CHECK constraint. Em vez de montar uma tabela de permissões separada para o time pequeno de hoje, a coluna permissions (jsonb, opcional) permite substituir esse padrão pontualmente — null significa "usar o padrão do role".',
       },
       {
-        title: 'Logs de auditoria com IP',
+        title: 'audit_logs com detalhes livres em JSON',
         text:
-          'Toda ação sensível gera um registro de auditoria com usuário, ação, tabela/registro afetado, IP de origem e data/hora — importante para rastrear mudanças em um sistema com múltiplos níveis de acesso.',
+          'audit_logs guarda user_id, action, details (jsonb) e ip_address. user_id referencia users(id) ON DELETE SET NULL, então o registro de auditoria sobrevive mesmo se a conta do usuário for excluída depois.',
       },
       {
-        title: 'Bloco de conteúdo como lista tipada',
+        title: 'sections tipadas + custom_html como escape hatch',
         text:
-          'O editor de manuais não guarda um texto único: cada manual é uma lista ordenada de blocos tipados (texto, imagem, passo numerado), cada um com sua posição. Isso viabiliza o editor com preview e arrastar-e-soltar.',
+          'O editor de manuais guarda blocos ordenados em sections, com type restrito por CHECK (title, subtitle, text, alert, table, image, step, checklist, divider) e sort_order. Mas manuals.custom_html, quando preenchido, substitui os blocos inteiramente — uma saída direta para páginas que não cabem no editor.',
       },
       {
-        title: 'Motivos de devolução configuráveis por canal',
+        title: 'Canal como chave natural, motivo como texto histórico',
         text:
-          'Cada canal de venda tem suas próprias regras de devolução, então os motivos ficam em uma tabela configurável associada ao canal, em vez de uma lista fixa no código.',
+          'return_reasons.channel e returns.channel referenciam return_channels(key) — não um id numérico — com ON UPDATE CASCADE. Já returns.reason guarda o rótulo do motivo como texto livre no momento da devolução, então editar ou desativar um motivo depois não reescreve o histórico.',
       },
     ],
   },
@@ -137,7 +136,7 @@ export default {
     items: [
       {
         role: 'Assistente de E-commerce',
-        company: 'Mellone',
+        company: 'E-commerce de calçados',
         period: 'jul/2024 — atual',
         description:
           'Coordenação da expedição, gestão do TikTok Shop, desenvolvimento do portal operacional interno e de automações, padronização de descrições de produtos e tabelas de medidas.',
@@ -185,7 +184,7 @@ export default {
     heading: 'Contato',
     intro: 'Aberto a oportunidades na área de dados e desenvolvimento.',
     emailLabel: 'E-mail',
-    emailTodo: 'TODO: adicionar endereço de e-mail',
+    phoneLabel: 'Telefone',
     linkedinLabel: 'LinkedIn',
     githubLabel: 'GitHub',
   },

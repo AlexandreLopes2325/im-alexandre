@@ -47,15 +47,8 @@ export default function Projects() {
                 ))}
               </ul>
 
-              <div className="mt-6 pt-4">
-                {project.linkIsTodo ? (
-                  <span
-                    className="inline-flex items-center gap-2 rounded-md border border-dashed border-accent-dim px-3 py-1.5 font-mono text-xs text-accent"
-                    title={project.link}
-                  >
-                    {t.projects.linkTodoLabel}
-                  </span>
-                ) : (
+              {!project.linkIsTodo && (
+                <div className="mt-6 pt-4">
                   <a
                     href={project.link}
                     target="_blank"
@@ -64,8 +57,8 @@ export default function Projects() {
                   >
                     {t.projects.linkLabel} →
                   </a>
-                )}
-              </div>
+                </div>
+              )}
             </article>
           ))}
         </div>
