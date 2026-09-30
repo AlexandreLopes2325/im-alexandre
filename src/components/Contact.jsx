@@ -12,13 +12,13 @@ export default function Contact() {
   const { t } = useLanguage()
 
   return (
-    <section id="contact" className="py-20" aria-labelledby="contact-heading">
+    <section id="contact" className="reveal py-20" aria-labelledby="contact-heading">
       <Container>
-        <SectionHeading id="contact-heading" title={t.contact.heading} />
+        <SectionHeading id="contact-heading" index={7} title={t.contact.heading} />
         <p className="-mt-6 mb-8 max-w-xl text-text-muted">{t.contact.intro}</p>
 
         <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-xl border border-border bg-surface p-5">
+          <div className="rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent/50">
             <dt className="font-mono text-xs uppercase tracking-wide text-text-muted">
               {t.contact.emailLabel}
             </dt>
@@ -28,7 +28,7 @@ export default function Contact() {
               </a>
             </dd>
           </div>
-          <div className="rounded-xl border border-border bg-surface p-5">
+          <div className="rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent/50">
             <dt className="font-mono text-xs uppercase tracking-wide text-text-muted">
               {t.contact.phoneLabel}
             </dt>
@@ -38,7 +38,7 @@ export default function Contact() {
               </a>
             </dd>
           </div>
-          <div className="rounded-xl border border-border bg-surface p-5">
+          <div className="rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent/50">
             <dt className="font-mono text-xs uppercase tracking-wide text-text-muted">
               {t.contact.linkedinLabel}
             </dt>
@@ -53,7 +53,7 @@ export default function Contact() {
               </a>
             </dd>
           </div>
-          <div className="rounded-xl border border-border bg-surface p-5">
+          <div className="rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent/50">
             <dt className="font-mono text-xs uppercase tracking-wide text-text-muted">
               {t.contact.githubLabel}
             </dt>
