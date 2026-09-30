@@ -54,5 +54,5 @@ See the final delivery report for the full list. In short, you still need to:
 - Add `public/foto.jpg` (a square photo works best) — until then, the hero shows your initials.
 - Add `public/cv-alexandre-lopes-pt.pdf` and `public/cv-alexandre-lopes-en.pdf`.
 - Fill in the real repository links for each project in the content files (currently `TODO: ...` placeholders).
-- Replace `https://TODO-your-domain.example/` in `index.html` and `public/sitemap.xml` with your real deployed URL once you have one.
+- Replace `https://im-alexandre.vercel.app/` in `index.html` and `public/sitemap.xml` with your real deployed URL once you have one.
 - Consider replacing `public/og-image.svg` with a real 1200×630 PNG/JPG — some platforms (LinkedIn, etc.) don't render SVG for link previews.

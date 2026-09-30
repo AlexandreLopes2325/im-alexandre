@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO: replace https://TODO-your-domain.example/ with your real deployed URL (Vercel or GitHub Pages) -->
+<!-- TODO: replace https://im-alexandre.vercel.app/ with your real deployed URL (Vercel or GitHub Pages) -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://TODO-your-domain.example/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://TODO-your-domain.example/?lang=pt" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://TODO-your-domain.example/?lang=en" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://TODO-your-domain.example/" />
+    <loc>https://im-alexandre.vercel.app/</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://im-alexandre.vercel.app/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://im-alexandre.vercel.app/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://im-alexandre.vercel.app/" />
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
