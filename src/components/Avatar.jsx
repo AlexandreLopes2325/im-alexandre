@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Avatar({ name = 'Alexandre Lopes', size = 128 }) {
+export default function Avatar({ name = 'Alexandre Lopes', size = 128, rounded = 'rounded-2xl' }) {
   const [imgFailed, setImgFailed] = useState(false)
   const initials = name
     .split(' ')
@@ -12,7 +12,7 @@ export default function Avatar({ name = 'Alexandre Lopes', size = 128 }) {
 
   return (
     <div
-      className="relative shrink-0 overflow-hidden rounded-2xl border border-border bg-surface"
+      className={`relative shrink-0 overflow-hidden border border-border bg-surface ${rounded}`}
       style={{ width: size, height: size }}
     >
       {!imgFailed ? (
@@ -27,7 +27,8 @@ export default function Avatar({ name = 'Alexandre Lopes', size = 128 }) {
         />
       ) : (
         <div
-          className="flex h-full w-full items-center justify-center font-heading text-4xl font-semibold text-accent"
+          className="flex h-full w-full items-center justify-center font-heading font-semibold text-accent"
+          style={{ fontSize: Math.round(size * 0.38) }}
           role="img"
           aria-label={name}
         >

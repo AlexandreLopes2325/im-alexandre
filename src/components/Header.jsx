@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLanguage } from '../hooks/useLanguage.jsx'
 import Container from './Container.jsx'
 import LanguageToggle from './LanguageToggle.jsx'
+import Avatar from './Avatar.jsx'
 
 export default function Header() {
   const { t } = useLanguage()
@@ -19,8 +20,9 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur">
       <Container className="flex h-16 items-center justify-between">
-        <a href="#main-content" className="section-heading text-lg font-semibold text-text">
-          Alexandre Lopes
+        <a href="#main-content" className="flex items-center gap-2.5 text-text">
+          <Avatar size={32} rounded="rounded-full" />
+          <span className="section-heading text-lg font-semibold">Alexandre Lopes</span>
         </a>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Main">
