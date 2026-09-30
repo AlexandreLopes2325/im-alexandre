@@ -1,26 +1,52 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#0a0b0d" />
-  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#26282f" stroke-width="2" />
+  <defs>
+    <radialGradient id="glow" cx="82%" cy="18%" r="60%">
+      <stop offset="0%" stop-color="#7c5cff" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#7c5cff" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#262a3a" />
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0a0b10" />
+  <rect width="1200" height="630" fill="url(#dots)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+  <rect x="0" y="0" width="1200" height="630" fill="none" stroke="#262a3a" stroke-width="2" />
+
   <text
     x="80"
-    y="300"
-    font-family="'Space Grotesk', ui-sans-serif, sans-serif"
-    font-size="64"
+    y="270"
+    font-family="'Segoe UI', Arial, sans-serif"
+    font-size="26"
+    font-weight="600"
+    letter-spacing="4"
+    fill="#ffb454"
+  >01 / PORTFOLIO</text>
+
+  <text
+    x="80"
+    y="340"
+    font-family="'Segoe UI', Arial, sans-serif"
+    font-size="68"
     font-weight="700"
-    fill="#e7e8ea"
+    letter-spacing="-1"
+    fill="#e8e9f0"
   >Alexandre Lopes</text>
+
   <text
     x="80"
-    y="360"
-    font-family="'Inter', ui-sans-serif, sans-serif"
+    y="392"
+    font-family="'Segoe UI', Arial, sans-serif"
     font-size="30"
-    fill="#9a9ca3"
+    fill="#9aa0b4"
   >Junior Developer — Data &amp; Systems</text>
+
   <text
     x="80"
-    y="420"
-    font-family="'JetBrains Mono', ui-monospace, monospace"
+    y="452"
+    font-family="Consolas, 'JetBrains Mono', monospace"
     font-size="22"
-    fill="#4ade9c"
+    fill="#7c5cff"
   >SQL · PostgreSQL · Node.js · React</text>
 </svg>
