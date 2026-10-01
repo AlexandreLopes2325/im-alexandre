@@ -6,9 +6,9 @@ export default function About() {
   const { t } = useLanguage()
 
   return (
-    <section id="about" className="border-b border-border py-20" aria-labelledby="about-heading">
+    <section id="about" className="reveal border-b border-border py-20" aria-labelledby="about-heading">
       <Container>
-        <SectionHeading id="about-heading" title={t.about.heading} />
+        <SectionHeading id="about-heading" index={1} title={t.about.heading} />
         <div className="max-w-3xl space-y-5 text-base leading-relaxed text-text-muted sm:text-lg">
           {t.about.paragraphs.map((paragraph, index) => (
             <p key={index}>{paragraph}</p>

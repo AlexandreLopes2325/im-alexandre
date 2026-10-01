@@ -10,7 +10,7 @@ function TimelineGroup({ heading, items, renderTitle }) {
         {items.map((item, i) => (
           <li key={i} className="relative">
             <span
-              className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-accent bg-bg"
+              className="absolute -left-[29px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-accent bg-bg shadow-[0_0_0_4px_var(--color-accent-soft)]"
               aria-hidden="true"
             />
             <p className="font-mono text-xs uppercase tracking-wide text-text-muted">{item.period}</p>
@@ -29,9 +29,9 @@ export default function Timeline() {
   const { t } = useLanguage()
 
   return (
-    <section id="experience" className="border-b border-border py-20" aria-labelledby="experience-heading">
+    <section id="experience" className="reveal border-b border-border py-20" aria-labelledby="experience-heading">
       <Container>
-        <SectionHeading id="experience-heading" title={t.experience.heading} />
+        <SectionHeading id="experience-heading" index={5} title={t.experience.heading} />
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2">
           <TimelineGroup
             heading={t.experience.heading}

@@ -215,7 +215,7 @@ function EntityBox({ name, x, y, w, h, fields }) {
                 textAnchor="end"
                 fontFamily="var(--font-mono)"
                 fontSize="10"
-                fill="var(--color-accent)"
+                fill={badge === 'PK' ? 'var(--color-accent-2)' : 'var(--color-accent)'}
               >
                 {badge}
               </text>

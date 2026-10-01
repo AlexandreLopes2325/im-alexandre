@@ -6,12 +6,15 @@ export default function Skills() {
   const { t } = useLanguage()
 
   return (
-    <section id="skills" className="border-b border-border py-20" aria-labelledby="skills-heading">
+    <section id="skills" className="reveal border-b border-border py-20" aria-labelledby="skills-heading">
       <Container>
-        <SectionHeading id="skills-heading" title={t.skills.heading} />
+        <SectionHeading id="skills-heading" index={2} title={t.skills.heading} />
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {t.skills.groups.map((group) => (
-            <div key={group.title} className="rounded-xl border border-border bg-surface p-5">
+            <div
+              key={group.title}
+              className="rounded-xl border border-border bg-surface p-5 transition-colors hover:border-accent/50"
+            >
               <h3 className="section-heading text-sm font-semibold uppercase tracking-wide text-accent">
                 {group.title}
               </h3>
