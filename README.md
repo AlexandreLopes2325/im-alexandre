@@ -11,8 +11,7 @@ npm install
 npm run dev
 ```
 
-Open the printed local URL (usually http://localhost:5173).
-
+Open the printed local URL (https://im-alexandre.vercel.app/?lang=pt#projects)
 ## Build
 
 ```bash
