@@ -20,12 +20,12 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-bg/90 backdrop-blur">
       <Container className="flex h-16 items-center justify-between">
-        <a href="#main-content" className="flex items-center gap-2.5 text-text">
+        <a href="#main-content" className="flex min-w-0 shrink items-center gap-2.5 text-text">
           <Avatar size={32} rounded="rounded-full" />
-          <span className="section-heading text-lg font-semibold">Alexandre Lopes</span>
+          <span className="section-heading truncate text-lg font-semibold">Alexandre Lopes</span>
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Main">
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="Main">
           {links.map((link) => (
             <a
               key={link.href}
@@ -37,11 +37,11 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
           <LanguageToggle />
           <button
             type="button"
-            className="inline-flex h-9 w-9 items-center justify-center rounded border border-border text-text md:hidden"
+            className="inline-flex h-9 w-9 items-center justify-center rounded border border-border text-text lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -55,7 +55,7 @@ export default function Header() {
       </Container>
 
       {open ? (
-        <nav id="mobile-nav" aria-label="Mobile" className="border-t border-border md:hidden">
+        <nav id="mobile-nav" aria-label="Mobile" className="border-t border-border lg:hidden">
           <Container className="flex flex-col gap-1 py-3">
             {links.map((link) => (
               <a

@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section className="relative overflow-hidden border-b border-border bg-dot-grid bg-glow py-20 sm:py-28">
       <Container className="relative flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between">
-        <div className="max-w-xl text-center lg:text-left">
+        <div className="w-full min-w-0 max-w-xl text-center lg:text-left">
           <p className="mb-3 font-mono text-sm uppercase tracking-widest text-accent">
             {t.hero.eyebrow}
           </p>
